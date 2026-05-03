@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+venv311/
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data & Models
+data/
+*.npy
+*.h5
+*.tflite
+
+# Large Files
+*.mov
+*.mp4

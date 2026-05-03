@@ -1,0 +1,12 @@
+fastapi==0.125.0
+uvicorn==0.38.0
+pydantic==2.12.5
+mediapipe
+numpy
+requests==2.28.2
+python-multipart
+opencv-python-headless==4.9.0.80
+azure-cognitiveservices-vision-customvision
+msrest
+httpx
+tenacity

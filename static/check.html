@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>수어 확인</title>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px 64px;
+    }
+
+    h1 { font-size: 2rem; font-weight: 800; color: #f8fafc; }
+    .subtitle { color: #64748b; margin-top: 6px; margin-bottom: 48px; font-size: 0.95rem; }
+
+    .top-link {
+      position: absolute; top: 24px; right: 28px;
+      color: #64748b; font-size: 0.85rem; text-decoration: none;
+      background: #1e293b; padding: 6px 14px; border-radius: 20px;
+      border: 1px solid #334155;
+    }
+    .top-link:hover { color: #e2e8f0; border-color: #60a5fa; }
+
+    /* ── 카드 그리드 ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 2px solid #334155;
+      border-radius: 18px;
+      padding: 32px 16px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
+      position: relative;
+      user-select: none;
+    }
+    .card:hover         { transform: translateY(-5px); border-color: #818cf8; background: #1e1e3a; }
+    .card.no-answer     { opacity: 0.45; cursor: not-allowed; }
+    .card.no-answer:hover { transform: none; border-color: #334155; background: #1e293b; }
+
+    .card-ko  { font-size: 2.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+    .card-en  { font-size: 0.88rem; color: #94a3b8; margin-bottom: 16px; }
+    .card-tag {
+      display: inline-block; font-size: 0.78rem;
+      padding: 3px 12px; border-radius: 20px;
+    }
+    .card:not(.no-answer) .card-tag { background: #1e1a3a; color: #818cf8; border: 1px solid #4338ca; }
+    .card.no-answer       .card-tag { background: #1e293b; color: #475569; border: 1px solid #334155; }
+
+    /* ── 모달 ── */
+    .backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 200; align-items: center; justify-content: center;
+    }
+    .backdrop.on { display: flex; }
+
+    .modal {
+      background: #1e293b; border-radius: 22px;
+      padding: 36px 32px 28px; width: 90%; max-width: 500px;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute; top: 16px; right: 16px;
+      background: #334155; border: none; color: #94a3b8;
+      width: 34px; height: 34px; border-radius: 50%;
+      cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .close-btn:hover { background: #475569; color: #fff; }
+
+    .modal-word { font-size: 2rem; font-weight: 800; text-align: center; color: #f1f5f9; }
+    .modal-en   { font-size: 0.95rem; color: #94a3b8; text-align: center; margin-bottom: 22px; }
+
+    /* ── 웹캠 ── */
+    .cam-wrap {
+      position: relative; border-radius: 14px; overflow: hidden;
+      background: #000; aspect-ratio: 4/3; margin-bottom: 14px;
+    }
+    #video {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scaleX(-1); display: block;
+    }
+    #landmark-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      transform: scaleX(-1); pointer-events: none;
+    }
+    .cam-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .count-num {
+      font-size: 8rem; font-weight: 900;
+      color: rgba(255,230,50,0.92);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+      display: none; line-height: 1;
+    }
+    .go-text {
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(100,255,150,0.95);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+      display: none;
+    }
+    .cam-msg {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.65); color: #fff;
+      padding: 6px 18px; border-radius: 20px; font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    /* ── 진행바 ── */
+    .progress-wrap {
+      height: 8px; background: #0f172a; border-radius: 4px;
+      margin-bottom: 14px; overflow: hidden; display: none;
+    }
+    .progress-bar {
+      height: 100%; width: 0%; border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+    .progress-bar.checking { background: #818cf8; }
+
+    /* ── 결과 오버레이 ── */
+    .result-overlay {
+      display: none; position: absolute; inset: 0;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+    }
+    .result-overlay.on { display: flex; }
+    .result-bg-pass { background: rgba(0,120,0,0.82); }
+    .result-bg-fail { background: rgba(160,0,0,0.82); }
+    .result-label {
+      font-size: 4rem; font-weight: 900; color: #fff;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .result-score {
+      font-size: 1.4rem; color: rgba(255,255,255,0.85); font-weight: 600;
+    }
+
+    /* ── 버튼 ── */
+    .check-btn {
+      width: 100%; padding: 14px;
+      background: #6366f1; color: #fff; border: none;
+      border-radius: 12px; font-size: 1.05rem; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .check-btn:hover:not(:disabled) { background: #4f46e5; }
+    .check-btn:disabled { background: #475569; cursor: not-allowed; }
+
+    /* ── 하단 버튼 그룹 ── */
+    .btn-row { display: flex; gap: 10px; margin-top: 12px; display: none; }
+    .btn-row.on { display: flex; }
+    .btn-retry {
+      flex: 1; padding: 12px; background: #334155; color: #e2e8f0;
+      border: none; border-radius: 10px; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer;
+    }
+    .btn-retry:hover { background: #475569; }
+    .btn-next {
+      flex: 1; padding: 12px; background: #22c55e; color: #fff;
+      border: none; border-radius: 10px; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer; display: none;
+    }
+    .btn-next:hover { background: #16a34a; }
+    .btn-next.on { display: block; }
+  </style>
+</head>
+<body>
+
+  <a class="top-link" href="/record">✏️ 녹화 페이지</a>
+
+  <h1>🤟 수어 확인</h1>
+  <p class="subtitle">단어 카드를 클릭하면 수화를 확인합니다</p>
+
+  <div class="grid" id="grid"></div>
+
+  <!-- 모달 -->
+  <div class="backdrop" id="backdrop">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal()">✕</button>
+
+      <p class="modal-word" id="mWord"></p>
+      <p class="modal-en"   id="mEn"></p>
+
+      <div class="cam-wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="landmark-canvas"></canvas>
+        <div class="cam-overlay">
+          <span class="count-num" id="countNum"></span>
+          <span class="go-text"   id="goText">GO!</span>
+        </div>
+        <!-- 결과 오버레이 -->
+        <div class="result-overlay" id="resultOverlay">
+          <div class="result-label" id="resultLabel"></div>
+          <div class="result-score" id="resultScore"></div>
+        </div>
+        <div class="cam-msg" id="camMsg">확인 버튼을 눌러 시작하세요</div>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar checking" id="progressBar"></div>
+      </div>
+
+      <button class="check-btn" id="checkBtn" onclick="startCheck()">
+        ▶ 수화 확인 시작
+      </button>
+
+      <div class="btn-row" id="btnRow">
+        <button class="btn-retry" onclick="retry()">↩ 다시 하기</button>
+        <button class="btn-next on" id="btnNext" onclick="closeModal()">다음 단어 →</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const RECORD_DURATION_MS = 3000;
+  const FRAME_INTERVAL_MS  = 200;
+
+  let currentId = null;
+  let camStream = null;
+
+  /* 단어 목록 로드 */
+  async function loadWords() {
+    const res   = await fetch('/api/korean/words');
+    const words = await res.json();
+    renderCards(words);
+  }
+
+  function renderCards(words) {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = words.map(w => {
+      const hasAnswer = w.is_recorded;
+      return `
+        <div class="card ${hasAnswer ? '' : 'no-answer'}"
+             onclick="${hasAnswer ? `openModal(${w.id},'${w.korean}','${w.english}')` : ''}">
+          <div class="card-ko">${w.korean}</div>
+          <div class="card-en">${w.english}</div>
+          <div class="card-tag">${hasAnswer ? '✅ 확인 가능' : '❌ 정답 없음'}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  /* 모달 열기 */
+  async function openModal(id, korean, english) {
+    currentId = id;
+    document.getElementById('mWord').textContent = korean;
+    document.getElementById('mEn').textContent   = english;
+    resetUI();
+
+    try {
+      camStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      document.getElementById('video').srcObject = camStream;
+    } catch (e) {
+      alert('웹캠을 열 수 없습니다: ' + e.message);
+      return;
+    }
+    document.getElementById('backdrop').classList.add('on');
+    startTracking();
+  }
+
+  function closeModal() {
+    stopTracking();
+    stopCam();
+    document.getElementById('backdrop').classList.remove('on');
+    loadWords();
+  }
+
+  function stopCam() {
+    if (camStream) { camStream.getTracks().forEach(t => t.stop()); camStream = null; }
+  }
+
+  function resetUI() {
+    document.getElementById('checkBtn').disabled    = false;
+    document.getElementById('checkBtn').textContent = '▶ 수화 확인 시작';
+    document.getElementById('checkBtn').style.display = 'block';
+    document.getElementById('countNum').style.display  = 'none';
+    document.getElementById('goText').style.display    = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('progressBar').style.width    = '0%';
+    document.getElementById('resultOverlay').className    = 'result-overlay';
+    document.getElementById('btnRow').classList.remove('on');
+    document.getElementById('camMsg').textContent = '확인 버튼을 눌러 시작하세요';
+  }
+
+  function retry() {
+    resetUI();
+  }
+
+  /* 수화 확인 시작 */
+  async function startCheck() {
+    const btn   = document.getElementById('checkBtn');
+    const numEl = document.getElementById('countNum');
+    const goEl  = document.getElementById('goText');
+    const msgEl = document.getElementById('camMsg');
+    btn.disabled = true;
+    btn.style.display = 'none';
+
+    // ── 카운트다운 3→2→1 ──
+    for (let i = 3; i >= 1; i--) {
+      numEl.textContent   = i;
+      numEl.style.display = 'block';
+      msgEl.textContent   = `${i}초 후 수화 시작...`;
+      await sleep(1000);
+    }
+    numEl.style.display = 'none';
+
+    // ── GO! 표시 ──
+    goEl.style.display = 'block';
+    msgEl.textContent  = '지금 수화하세요! (2초)';
+    document.getElementById('progressWrap').style.display = 'block';
+
+    // ── 2초 프레임 캡처 ──
+    const blobs = [];
+    const start = Date.now();
+    while (Date.now() - start < RECORD_DURATION_MS) {
+      blobs.push(await captureFrame());
+      const pct = Math.min(100, ((Date.now() - start) / RECORD_DURATION_MS) * 100);
+      document.getElementById('progressBar').style.width = pct + '%';
+      await sleep(FRAME_INTERVAL_MS);
+    }
+    document.getElementById('progressBar').style.width = '100%';
+    goEl.style.display = 'none';
+    msgEl.textContent  = '채점 중...';
+
+    // ── 서버 전송 ──
+    const form = new FormData();
+    blobs.forEach((blob, i) => form.append('files', blob, `frame_${i}.jpg`));
+
+    try {
+      const res  = await fetch(`/api/korean/evaluate/${currentId}`, { method: 'POST', body: form });
+      const data = await res.json();
+
+      if (res.ok) {
+        showResult(data.isCorrect, data.score);
+      } else {
+        msgEl.textContent = `오류: ${data.detail}`;
+        btn.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '다시 시도';
+      }
+    } catch (e) {
+      msgEl.textContent = '네트워크 오류';
+      btn.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '다시 시도';
+    }
+  }
+
+  function showResult(isCorrect, score) {
+    const overlay  = document.getElementById('resultOverlay');
+    const labelEl  = document.getElementById('resultLabel');
+    const scoreEl  = document.getElementById('resultScore');
+    const msgEl    = document.getElementById('camMsg');
+    const btnRow   = document.getElementById('btnRow');
+    const btnNext  = document.getElementById('btnNext');
+
+    if (isCorrect) {
+      overlay.className = 'result-overlay on result-bg-pass';
+      labelEl.textContent = '✅ PASS!';
+      msgEl.textContent   = '정답이에요!';
+      btnNext.classList.add('on');
+    } else {
+      overlay.className = 'result-overlay on result-bg-fail';
+      labelEl.textContent = '❌ 다시!';
+      msgEl.textContent   = '조금 더 연습해봐요';
+      btnNext.classList.remove('on');
+    }
+
+    scoreEl.textContent = `점수: ${Math.round(score * 100)}%`;
+    btnRow.classList.add('on');
+    document.getElementById('progressWrap').style.display = 'none';
+  }
+
+  function captureFrame() {
+    const v = document.getElementById('video');
+    const c = document.createElement('canvas');
+    const MAX_W = 640;
+    const scale = Math.min(1, MAX_W / (v.videoWidth || MAX_W));
+    c.width  = Math.round((v.videoWidth  || MAX_W) * scale);
+    c.height = Math.round((v.videoHeight || 480)   * scale);
+    c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+    return new Promise(r => c.toBlob(r, 'image/jpeg', 0.80));
+  }
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  /* ── 손 랜드마크 시각화 ── */
+  let hands = null;
+  let mpCamera = null;
+
+  function initHands() {
+    hands = new Hands({ locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}` });
+    hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.6, minTrackingConfidence: 0.5 });
+    hands.onResults(onHandResults);
+  }
+
+  function onHandResults(results) {
+    const canvas = document.getElementById('landmark-canvas');
+    if (!canvas) return;
+    const video = document.getElementById('video');
+    canvas.width  = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (results.multiHandLandmarks) {
+      for (const landmarks of results.multiHandLandmarks) {
+        drawConnectors(ctx, landmarks, HAND_CONNECTIONS, { color: '#00e5ff', lineWidth: 2.5 });
+        drawLandmarks(ctx, landmarks, { color: '#ff6ec7', lineWidth: 1, radius: 4 });
+      }
+    }
+  }
+
+  function startTracking() {
+    if (!hands) initHands();
+    const video = document.getElementById('video');
+    mpCamera = new Camera(video, {
+      onFrame: async () => { await hands.send({ image: video }); },
+      width: 640, height: 480
+    });
+    mpCamera.start();
+  }
+
+  function stopTracking() {
+    if (mpCamera) { mpCamera.stop(); mpCamera = null; }
+    const canvas = document.getElementById('landmark-canvas');
+    if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  loadWords();
+</script>
+</body>
+</html>

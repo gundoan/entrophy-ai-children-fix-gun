@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>수어 정답 녹화</title>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px 64px;
+    }
+
+    h1 { font-size: 2rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px; }
+    .subtitle { color: #64748b; margin-top: 6px; margin-bottom: 48px; font-size: 0.95rem; }
+
+    /* ── 카드 그리드 ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 2px solid #334155;
+      border-radius: 18px;
+      padding: 32px 16px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
+      position: relative;
+      user-select: none;
+    }
+    .card:hover { transform: translateY(-5px); border-color: #60a5fa; background: #1a2e4a; }
+    .card.recorded { border-color: #22c55e; background: #0f2d1a; }
+    .card.recorded:hover { border-color: #4ade80; background: #122e1c; }
+
+    .badge {
+      display: none;
+      position: absolute; top: 14px; right: 14px;
+      background: #22c55e; color: #fff;
+      border-radius: 50%; width: 26px; height: 26px;
+      font-size: 13px; align-items: center; justify-content: center;
+      font-weight: 700;
+    }
+    .card.recorded .badge { display: flex; }
+
+    .card-ko   { font-size: 2.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+    .card-en   { font-size: 0.88rem; color: #94a3b8; margin-bottom: 16px; }
+    .card-tag  {
+      display: inline-block;
+      font-size: 0.78rem; padding: 3px 12px; border-radius: 20px;
+    }
+    .card:not(.recorded) .card-tag { background: #1e293b; color: #475569; border: 1px solid #334155; }
+    .card.recorded       .card-tag { background: #14532d; color: #86efac; }
+
+    /* ── 모달 ── */
+    .backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 200; align-items: center; justify-content: center;
+    }
+    .backdrop.on { display: flex; }
+
+    .modal {
+      background: #1e293b; border-radius: 22px;
+      padding: 36px 32px 28px; width: 90%; max-width: 500px;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute; top: 16px; right: 16px;
+      background: #334155; border: none; color: #94a3b8;
+      width: 34px; height: 34px; border-radius: 50%;
+      cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .close-btn:hover { background: #475569; color: #fff; }
+
+    .modal-word { font-size: 2rem; font-weight: 800; text-align: center; color: #f1f5f9; }
+    .modal-en   { font-size: 0.95rem; color: #94a3b8; text-align: center; margin-bottom: 22px; }
+
+    /* ── 웹캠 ── */
+    .cam-wrap {
+      position: relative; border-radius: 14px; overflow: hidden;
+      background: #000; aspect-ratio: 4/3; margin-bottom: 14px;
+    }
+    #video {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scaleX(-1);
+      display: block;
+    }
+    .cam-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .count-num {
+      font-size: 8rem; font-weight: 900;
+      color: rgba(255,230,50,0.92);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+      display: none; line-height: 1;
+    }
+    .rec-indicator {
+      display: none;
+      position: absolute; top: 14px; left: 14px;
+      background: rgba(220,0,0,0.85);
+      color: #fff; font-size: 0.85rem; font-weight: 700;
+      padding: 5px 12px; border-radius: 20px;
+      align-items: center; gap: 6px;
+    }
+    .rec-indicator.on { display: flex; }
+    .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff;
+               animation: blink 0.7s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    .cam-msg {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.65); color: #fff;
+      padding: 6px 18px; border-radius: 20px; font-size: 0.88rem;
+      white-space: nowrap;
+    }
+    #landmark-canvas {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      transform: scaleX(-1);
+      pointer-events: none;
+    }
+
+    /* ── 진행바 ── */
+    .progress-wrap {
+      height: 8px; background: #1e293b; border-radius: 4px;
+      margin-bottom: 14px; overflow: hidden; display: none;
+    }
+    .progress-bar {
+      height: 100%; width: 0%; background: #22c55e;
+      border-radius: 4px; transition: width 0.1s linear;
+    }
+
+    /* ── 버튼 ── */
+    .rec-btn {
+      width: 100%; padding: 14px;
+      background: #ef4444; color: #fff; border: none;
+      border-radius: 12px; font-size: 1.05rem; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .rec-btn:hover:not(:disabled) { background: #dc2626; }
+    .rec-btn:disabled { background: #475569; cursor: not-allowed; }
+
+    /* ── 결과 배너 ── */
+    .result {
+      display: none; margin-top: 14px;
+      padding: 14px 18px; border-radius: 12px;
+      font-size: 1rem; font-weight: 600; text-align: center;
+    }
+    .result.ok  { background: #14532d; color: #86efac; }
+    .result.err { background: #450a0a; color: #fca5a5; }
+  </style>
+</head>
+<body>
+
+  <h1>🤟 수어 정답 녹화</h1>
+  <p class="subtitle">단어 카드를 클릭 → 3초 카운트다운 → 2초간 수화 동작 녹화</p>
+
+  <div class="grid" id="grid"></div>
+
+  <!-- 모달 -->
+  <div class="backdrop" id="backdrop">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal()">✕</button>
+
+      <p class="modal-word" id="mWord"></p>
+      <p class="modal-en"   id="mEn"></p>
+
+      <div class="cam-wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="landmark-canvas"></canvas>
+        <div class="cam-overlay">
+          <span class="count-num" id="countNum"></span>
+        </div>
+        <div class="rec-indicator" id="recIndicator">
+          <span class="rec-dot"></span> REC
+        </div>
+        <div class="cam-msg" id="camMsg">녹화 버튼을 눌러 시작하세요</div>
+      </div>
+
+      <!-- 진행바 (녹화 중 표시) -->
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <button class="rec-btn" id="recBtn" onclick="startRecord()">
+        ● 녹화 시작 (3초 카운트다운 → 2초 녹화)
+      </button>
+      <div class="result" id="resultBanner"></div>
+    </div>
+  </div>
+
+<script>
+  const RECORD_DURATION_MS = 3000;   // 녹화 길이
+  const FRAME_INTERVAL_MS  = 200;    // 프레임 간격 (200ms = 초당 5장)
+
+  let currentId  = null;
+  let camStream  = null;
+  let handsModel = null;
+  let isTracking = false;
+
+  // ── 손 랜드마크 트래킹 ──────────────────────────
+  async function initHands() {
+    if (handsModel) return;
+    handsModel = new Hands({ locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/${f}` });
+    handsModel.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
+    handsModel.onResults(onHandResults);
+  }
+
+  function onHandResults(results) {
+    const canvas = document.getElementById('landmark-canvas');
+    const video  = document.getElementById('video');
+    const ctx    = canvas.getContext('2d');
+    canvas.width  = video.videoWidth  || canvas.offsetWidth;
+    canvas.height = video.videoHeight || canvas.offsetHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!results.multiHandLandmarks) return;
+    for (const lm of results.multiHandLandmarks) {
+      drawConnectors(ctx, lm, HAND_CONNECTIONS, { color: 'rgba(0,220,255,0.85)', lineWidth: 2.5 });
+      drawLandmarks(ctx, lm, { color: 'rgba(255,70,120,0.95)', lineWidth: 1, radius: 4 });
+    }
+  }
+
+  async function startTracking() {
+    isTracking = true;
+    await initHands();
+    (async function loop() {
+      if (!isTracking) return;
+      const v = document.getElementById('video');
+      if (v.readyState >= 2) { try { await handsModel.send({ image: v }); } catch(e) {} }
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  function stopTracking() {
+    isTracking = false;
+    const c = document.getElementById('landmark-canvas');
+    if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+  }
+
+  /* 단어 목록 로드 & 카드 렌더링 */
+  async function loadWords() {
+    const res   = await fetch('/api/korean/words');
+    const words = await res.json();
+    const grid  = document.getElementById('grid');
+    grid.innerHTML = words.map(w => `
+      <div class="card ${w.is_recorded ? 'recorded' : ''}"
+           onclick="openModal(${w.id}, '${w.korean}', '${w.english}')">
+        <div class="badge">✓</div>
+        <div class="card-ko">${w.korean}</div>
+        <div class="card-en">${w.english}</div>
+        <div class="card-tag">${w.is_recorded ? '✅ 녹화 완료' : '미녹화'}</div>
+      </div>
+    `).join('');
+  }
+
+  /* 모달 열기 */
+  async function openModal(id, korean, english) {
+    currentId = id;
+    document.getElementById('mWord').textContent = korean;
+    document.getElementById('mEn').textContent   = english;
+    reset();
+
+    try {
+      camStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      document.getElementById('video').srcObject = camStream;
+    } catch (e) {
+      alert('웹캠을 열 수 없습니다: ' + e.message);
+      return;
+    }
+    document.getElementById('backdrop').classList.add('on');
+    startTracking();
+  }
+
+  /* 모달 닫기 */
+  function closeModal() {
+    stopTracking();
+    stopCam();
+    document.getElementById('backdrop').classList.remove('on');
+    loadWords();
+  }
+
+  function stopCam() {
+    if (camStream) { camStream.getTracks().forEach(t => t.stop()); camStream = null; }
+  }
+
+  /* UI 초기화 */
+  function reset() {
+    document.getElementById('recBtn').disabled    = false;
+    document.getElementById('recBtn').textContent = '● 녹화 시작 (3초 카운트다운 → 2초 녹화)';
+    document.getElementById('resultBanner').style.display = 'none';
+    document.getElementById('countNum').style.display     = 'none';
+    document.getElementById('recIndicator').classList.remove('on');
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('progressBar').style.width    = '0%';
+    document.getElementById('camMsg').textContent = '녹화 버튼을 눌러 시작하세요';
+  }
+
+  /* 녹화 시작 */
+  async function startRecord() {
+    const btn    = document.getElementById('recBtn');
+    const numEl  = document.getElementById('countNum');
+    const msgEl  = document.getElementById('camMsg');
+    btn.disabled = true;
+
+    // ── 3초 카운트다운 ──
+    for (let i = 3; i >= 1; i--) {
+      numEl.textContent   = i;
+      numEl.style.display = 'block';
+      msgEl.textContent   = `${i}초 후 녹화 시작...`;
+      await sleep(1000);
+    }
+    numEl.style.display = 'none';
+
+    // ── 2초 동안 프레임 캡처 ──
+    document.getElementById('recIndicator').classList.add('on');
+    document.getElementById('progressWrap').style.display = 'block';
+    msgEl.textContent = '수화를 해주세요! (2초)';
+
+    const blobs = [];
+    const start = Date.now();
+
+    while (Date.now() - start < RECORD_DURATION_MS) {
+      blobs.push(await captureFrame());
+      const progress = Math.min(100, ((Date.now() - start) / RECORD_DURATION_MS) * 100);
+      document.getElementById('progressBar').style.width = progress + '%';
+      await sleep(FRAME_INTERVAL_MS);
+    }
+    document.getElementById('progressBar').style.width = '100%';
+    document.getElementById('recIndicator').classList.remove('on');
+    msgEl.textContent = `${blobs.length}프레임 캡처 완료. 서버 전송 중...`;
+
+    // ── 서버 전송 ──
+    const form = new FormData();
+    blobs.forEach((blob, i) => form.append('files', blob, `frame_${i}.jpg`));
+
+    try {
+      const res  = await fetch(`/api/korean/record/${currentId}`, { method: 'POST', body: form });
+      const data = await res.json();
+      const banner = document.getElementById('resultBanner');
+
+      if (res.ok) {
+        banner.className   = 'result ok';
+        banner.textContent = `✅ '${data.word}' 저장 완료! (${data.frames}프레임)`;
+        msgEl.textContent  = '저장되었습니다!';
+        btn.textContent    = '다시 녹화';
+      } else {
+        banner.className   = 'result err';
+        banner.textContent = `❌ ${data.detail || '오류가 발생했습니다'}`;
+        msgEl.textContent  = '오류 발생';
+        btn.textContent    = '다시 시도';
+      }
+      banner.style.display = 'block';
+    } catch (e) {
+      msgEl.textContent    = '네트워크 오류';
+      btn.textContent      = '다시 시도';
+    }
+    btn.disabled = false;
+  }
+
+  /* 웹캠 프레임 캡처 (원본 방향 — 서버 MediaPipe 분석용) */
+  function captureFrame() {
+    const v = document.getElementById('video');
+    const c = document.createElement('canvas');
+    const MAX_W = 640;
+    const scale = Math.min(1, MAX_W / (v.videoWidth || MAX_W));
+    c.width  = Math.round((v.videoWidth  || MAX_W) * scale);
+    c.height = Math.round((v.videoHeight || 480)   * scale);
+    c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+    return new Promise(r => c.toBlob(r, 'image/jpeg', 0.80));
+  }
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  loadWords();
+</script>
+</body>
+</html>
