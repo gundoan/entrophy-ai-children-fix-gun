@@ -101,120 +101,6 @@
       }
     },
     "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
       "present": false,
       "handshape": {
         "finger_selection": {
@@ -313,106 +199,6 @@
           "far": false
         }
       }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
     },
     "inter_hand_relation": {
       "both_present": false,
@@ -532,1090 +318,20 @@
       "handshape": {
         "finger_selection": {
           "thumb": false,
-          "index": false,
+          "index": true,
           "middle": false,
           "ring": false,
-          "pinky": true
+          "pinky": false
         },
         "finger_flexion": {
           "thumb_extended": false,
           "thumb_folded": true,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": true,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": true,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": true,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": true,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
           "index_extended": true,
           "index_folded": false,
           "middle_extended": false,
           "middle_folded": true,
           "ring_extended": false,
           "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": true,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": true,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": true,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": true,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": true,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": false,
-          "pinky_folded": true
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": true,
-          "all_fingers_spread": false,
-          "all_fingers_closed": true
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": true,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": true,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": false,
-      "index_over_middle": false,
-      "middle_over_index": false
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": true,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
           "pinky_extended": false,
           "pinky_folded": true
         },
@@ -1628,11 +344,11 @@
           "thumb_contact_pinky": false
         },
         "finger_contact": {
-          "index_middle_contact": true,
+          "index_middle_contact": false,
           "middle_ring_contact": true,
           "ring_pinky_contact": true,
           "all_fingers_spread": false,
-          "all_fingers_closed": true
+          "all_fingers_closed": false
         }
       },
       "orientation": {
@@ -1641,12 +357,12 @@
         "palm_left": false,
         "palm_right": false,
         "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": true,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
         "fingers_left": false,
         "fingers_right": false,
-        "fingers_forward": true,
+        "fingers_forward": false,
         "fingers_backward": false,
         "wrist_pronated": false,
         "wrist_supinated": false,
@@ -1655,9 +371,9 @@
       "location": {
         "major": {
           "head": false,
-          "face": false,
+          "face": true,
           "neck": false,
-          "torso": false,
+          "torso": true,
           "arm": false,
           "handspace": false
         },
@@ -1666,12 +382,12 @@
           "eye": false,
           "nose": false,
           "mouth": false,
-          "chin": false,
+          "chin": true,
           "cheek": false,
           "ear": false
         },
         "torso": {
-          "chest": false,
+          "chest": true,
           "sternum": false,
           "stomach": false,
           "waist": false
@@ -1687,7 +403,7 @@
         },
         "spatial_height": {
           "high": false,
-          "mid": false,
+          "mid": true,
           "low": false
         },
         "spatial_distance": {
@@ -1818,8 +534,8 @@
           "thumb": false,
           "index": true,
           "middle": true,
-          "ring": true,
-          "pinky": true
+          "ring": false,
+          "pinky": false
         },
         "finger_flexion": {
           "thumb_extended": false,
@@ -1828,10 +544,10 @@
           "index_folded": false,
           "middle_extended": true,
           "middle_folded": false,
-          "ring_extended": true,
-          "ring_folded": false,
-          "pinky_extended": true,
-          "pinky_folded": false
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
         },
         "thumb_configuration": {
           "thumb_opposed": true,
@@ -1843,9 +559,9 @@
         },
         "finger_contact": {
           "index_middle_contact": false,
-          "middle_ring_contact": true,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": true,
           "all_fingers_closed": false
         }
       },
@@ -1854,8 +570,8 @@
         "palm_down": false,
         "palm_left": false,
         "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
+        "palm_forward": false,
+        "palm_backward": true,
         "fingers_up": true,
         "fingers_down": false,
         "fingers_left": false,
@@ -1869,9 +585,9 @@
       "location": {
         "major": {
           "head": false,
-          "face": false,
+          "face": true,
           "neck": false,
-          "torso": false,
+          "torso": true,
           "arm": false,
           "handspace": false
         },
@@ -1880,12 +596,12 @@
           "eye": false,
           "nose": false,
           "mouth": false,
-          "chin": false,
+          "chin": true,
           "cheek": false,
           "ear": false
         },
         "torso": {
-          "chest": false,
+          "chest": true,
           "sternum": false,
           "stomach": false,
           "waist": false
@@ -1901,7 +617,7 @@
         },
         "spatial_height": {
           "high": false,
-          "mid": false,
+          "mid": true,
           "low": false
         },
         "spatial_distance": {
@@ -2027,28 +743,29 @@
       }
     },
     "right": {
+      "present": false,
       "handshape": {
         "finger_selection": {
           "thumb": false,
           "index": false,
           "middle": false,
           "ring": false,
-          "pinky": true
+          "pinky": false
         },
         "finger_flexion": {
           "thumb_extended": false,
-          "thumb_folded": true,
+          "thumb_folded": false,
           "index_extended": false,
-          "index_folded": true,
+          "index_folded": false,
           "middle_extended": false,
-          "middle_folded": true,
+          "middle_folded": false,
           "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
+          "ring_folded": false,
+          "pinky_extended": false,
           "pinky_folded": false
         },
         "thumb_configuration": {
-          "thumb_opposed": true,
+          "thumb_opposed": false,
           "thumb_crossing": false,
           "thumb_contact_index": false,
           "thumb_contact_middle": false,
@@ -2056,8 +773,8 @@
           "thumb_contact_pinky": false
         },
         "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
           "ring_pinky_contact": false,
           "all_fingers_spread": false,
           "all_fingers_closed": false
@@ -2068,9 +785,9 @@
         "palm_down": false,
         "palm_left": false,
         "palm_right": false,
-        "palm_forward": true,
+        "palm_forward": false,
         "palm_backward": false,
-        "fingers_up": true,
+        "fingers_up": false,
         "fingers_down": false,
         "fingers_left": false,
         "fingers_right": false,
@@ -2078,7 +795,7 @@
         "fingers_backward": false,
         "wrist_pronated": false,
         "wrist_supinated": false,
-        "wrist_neutral": true
+        "wrist_neutral": false
       },
       "location": {
         "major": {
@@ -2120,11 +837,10 @@
         },
         "spatial_distance": {
           "contact": false,
-          "near": true,
+          "near": false,
           "far": false
         }
-      },
-      "present": true
+      }
     },
     "inter_hand_relation": {
       "both_present": false,
@@ -2247,7 +963,7 @@
           "index": false,
           "middle": false,
           "ring": false,
-          "pinky": true
+          "pinky": false
         },
         "finger_flexion": {
           "thumb_extended": false,
@@ -2258,8 +974,8 @@
           "middle_folded": true,
           "ring_extended": false,
           "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
+          "pinky_extended": false,
+          "pinky_folded": true
         },
         "thumb_configuration": {
           "thumb_opposed": true,
@@ -2271,435 +987,122 @@
         },
         "finger_contact": {
           "index_middle_contact": true,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": true,
-      "index_over_middle": false,
-      "middle_over_index": true
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": true,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": true,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": true,
-        "palm_backward": false,
-        "fingers_up": true,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": true
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": true,
-          "far": false
-        }
-      },
-      "present": true
-    },
-    "inter_hand_relation": {
-      "both_present": false,
-      "forming_single_shape": false,
-      "mirrored_shape": false,
-      "hand_distance_close": false,
-      "finger_tips_facing": false
-    },
-    "finger_relation": {
-      "index_middle_crossed": true,
-      "index_over_middle": false,
-      "middle_over_index": true
-    }
-  },
-  {
-    "left": {
-      "present": false,
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": false
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": false,
-          "index_extended": false,
-          "index_folded": false,
-          "middle_extended": false,
-          "middle_folded": false,
-          "ring_extended": false,
-          "ring_folded": false,
-          "pinky_extended": false,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": false,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
-          "middle_ring_contact": false,
-          "ring_pinky_contact": false,
-          "all_fingers_spread": false,
-          "all_fingers_closed": false
-        }
-      },
-      "orientation": {
-        "palm_up": false,
-        "palm_down": false,
-        "palm_left": false,
-        "palm_right": false,
-        "palm_forward": false,
-        "palm_backward": false,
-        "fingers_up": false,
-        "fingers_down": false,
-        "fingers_left": false,
-        "fingers_right": false,
-        "fingers_forward": false,
-        "fingers_backward": false,
-        "wrist_pronated": false,
-        "wrist_supinated": false,
-        "wrist_neutral": false
-      },
-      "location": {
-        "major": {
-          "head": false,
-          "face": false,
-          "neck": false,
-          "torso": false,
-          "arm": false,
-          "handspace": false
-        },
-        "face": {
-          "forehead": false,
-          "eye": false,
-          "nose": false,
-          "mouth": false,
-          "chin": false,
-          "cheek": false,
-          "ear": false
-        },
-        "torso": {
-          "chest": false,
-          "sternum": false,
-          "stomach": false,
-          "waist": false
-        },
-        "arm": {
-          "upper_arm": false,
-          "forearm": false,
-          "wrist": false
-        },
-        "hand_relative": {
-          "palm": false,
-          "back_of_hand": false
-        },
-        "spatial_height": {
-          "high": false,
-          "mid": false,
-          "low": false
-        },
-        "spatial_distance": {
-          "contact": false,
-          "near": false,
-          "far": false
-        }
-      }
-    },
-    "right": {
-      "handshape": {
-        "finger_selection": {
-          "thumb": false,
-          "index": false,
-          "middle": false,
-          "ring": false,
-          "pinky": true
-        },
-        "finger_flexion": {
-          "thumb_extended": false,
-          "thumb_folded": true,
-          "index_extended": false,
-          "index_folded": true,
-          "middle_extended": false,
-          "middle_folded": true,
-          "ring_extended": false,
-          "ring_folded": true,
-          "pinky_extended": true,
-          "pinky_folded": false
-        },
-        "thumb_configuration": {
-          "thumb_opposed": true,
-          "thumb_crossing": false,
-          "thumb_contact_index": false,
-          "thumb_contact_middle": false,
-          "thumb_contact_ring": false,
-          "thumb_contact_pinky": false
-        },
-        "finger_contact": {
-          "index_middle_contact": false,
           "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": true
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": true,
+      "index_over_middle": true,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
           "ring_pinky_contact": false,
           "all_fingers_spread": false,
           "all_fingers_closed": false
@@ -2710,9 +1113,9 @@
         "palm_down": false,
         "palm_left": false,
         "palm_right": false,
-        "palm_forward": true,
+        "palm_forward": false,
         "palm_backward": false,
-        "fingers_up": true,
+        "fingers_up": false,
         "fingers_down": false,
         "fingers_left": false,
         "fingers_right": false,
@@ -2720,7 +1123,7 @@
         "fingers_backward": false,
         "wrist_pronated": false,
         "wrist_supinated": false,
-        "wrist_neutral": true
+        "wrist_neutral": false
       },
       "location": {
         "major": {
@@ -2758,6 +1161,105 @@
         "spatial_height": {
           "high": false,
           "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": true,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": true,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": true,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": true,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": true
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": true,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": true,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
           "low": false
         },
         "spatial_distance": {
@@ -2889,7 +1391,7 @@
           "index": false,
           "middle": false,
           "ring": false,
-          "pinky": true
+          "pinky": false
         },
         "finger_flexion": {
           "thumb_extended": true,
@@ -2900,7 +1402,122 @@
           "middle_folded": true,
           "ring_extended": false,
           "ring_folded": true,
-          "pinky_extended": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": true,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
           "pinky_folded": false
         },
         "thumb_configuration": {
@@ -2912,8 +1529,8 @@
           "thumb_contact_pinky": false
         },
         "finger_contact": {
-          "index_middle_contact": true,
-          "middle_ring_contact": true,
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
           "ring_pinky_contact": false,
           "all_fingers_spread": false,
           "all_fingers_closed": false
@@ -2925,8 +1542,8 @@
         "palm_left": false,
         "palm_right": false,
         "palm_forward": false,
-        "palm_backward": true,
-        "fingers_up": true,
+        "palm_backward": false,
+        "fingers_up": false,
         "fingers_down": false,
         "fingers_left": false,
         "fingers_right": false,
@@ -2934,7 +1551,7 @@
         "fingers_backward": false,
         "wrist_pronated": false,
         "wrist_supinated": false,
-        "wrist_neutral": true
+        "wrist_neutral": false
       },
       "location": {
         "major": {
@@ -2972,6 +1589,1389 @@
         "spatial_height": {
           "high": false,
           "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": true,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": true,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": true,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": true,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": true,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": true,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": true,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": true,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": true
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": true,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": true,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": true,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": true,
+          "index_extended": true,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": true,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": true,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": true,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": true,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": true,
+          "index_extended": true,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": true,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": true,
+          "index_extended": false,
+          "index_folded": true,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": true,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": true,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": true,
+          "far": false
+        }
+      },
+      "present": true
+    },
+    "inter_hand_relation": {
+      "both_present": false,
+      "forming_single_shape": false,
+      "mirrored_shape": false,
+      "hand_distance_close": false,
+      "finger_tips_facing": false
+    },
+    "finger_relation": {
+      "index_middle_crossed": false,
+      "index_over_middle": false,
+      "middle_over_index": false
+    }
+  },
+  {
+    "left": {
+      "present": false,
+      "handshape": {
+        "finger_selection": {
+          "thumb": false,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": false,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": false,
+          "middle_extended": false,
+          "middle_folded": false,
+          "ring_extended": false,
+          "ring_folded": false,
+          "pinky_extended": false,
+          "pinky_folded": false
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": false,
+          "middle_ring_contact": false,
+          "ring_pinky_contact": false,
+          "all_fingers_spread": false,
+          "all_fingers_closed": false
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": false,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": false
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": false,
+          "neck": false,
+          "torso": false,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": false,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": false,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": false,
+          "low": false
+        },
+        "spatial_distance": {
+          "contact": false,
+          "near": false,
+          "far": false
+        }
+      }
+    },
+    "right": {
+      "handshape": {
+        "finger_selection": {
+          "thumb": true,
+          "index": false,
+          "middle": false,
+          "ring": false,
+          "pinky": false
+        },
+        "finger_flexion": {
+          "thumb_extended": true,
+          "thumb_folded": false,
+          "index_extended": false,
+          "index_folded": true,
+          "middle_extended": false,
+          "middle_folded": true,
+          "ring_extended": false,
+          "ring_folded": true,
+          "pinky_extended": false,
+          "pinky_folded": true
+        },
+        "thumb_configuration": {
+          "thumb_opposed": false,
+          "thumb_crossing": false,
+          "thumb_contact_index": false,
+          "thumb_contact_middle": false,
+          "thumb_contact_ring": false,
+          "thumb_contact_pinky": false
+        },
+        "finger_contact": {
+          "index_middle_contact": true,
+          "middle_ring_contact": true,
+          "ring_pinky_contact": true,
+          "all_fingers_spread": false,
+          "all_fingers_closed": true
+        }
+      },
+      "orientation": {
+        "palm_up": false,
+        "palm_down": false,
+        "palm_left": false,
+        "palm_right": false,
+        "palm_forward": false,
+        "palm_backward": false,
+        "fingers_up": true,
+        "fingers_down": false,
+        "fingers_left": false,
+        "fingers_right": false,
+        "fingers_forward": false,
+        "fingers_backward": false,
+        "wrist_pronated": false,
+        "wrist_supinated": false,
+        "wrist_neutral": true
+      },
+      "location": {
+        "major": {
+          "head": false,
+          "face": true,
+          "neck": false,
+          "torso": true,
+          "arm": false,
+          "handspace": false
+        },
+        "face": {
+          "forehead": false,
+          "eye": false,
+          "nose": false,
+          "mouth": false,
+          "chin": true,
+          "cheek": false,
+          "ear": false
+        },
+        "torso": {
+          "chest": true,
+          "sternum": false,
+          "stomach": false,
+          "waist": false
+        },
+        "arm": {
+          "upper_arm": false,
+          "forearm": false,
+          "wrist": false
+        },
+        "hand_relative": {
+          "palm": false,
+          "back_of_hand": false
+        },
+        "spatial_height": {
+          "high": false,
+          "mid": true,
           "low": false
         },
         "spatial_distance": {

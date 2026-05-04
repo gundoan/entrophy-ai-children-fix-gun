@@ -353,9 +353,8 @@
   const RECORD_DURATION_MS = 3000;
   const FRAME_INTERVAL_MS  = 200;
 
-  let currentId   = null;
-  let camStream   = null;
-  let isCapturing = false;
+  let currentId = null;
+  let camStream = null;
   let passedCount = 0;
   let totalWords  = 0;
 
@@ -468,7 +467,6 @@
     msgEl.textContent  = '지금 수화하세요! (3초)';
     document.getElementById('progressWrap').style.display = 'block';
 
-    isCapturing = true;
     const blobs = [];
     const start = Date.now();
     while (Date.now() - start < RECORD_DURATION_MS) {
@@ -477,7 +475,6 @@
       document.getElementById('progressBar').style.width = pct + '%';
       await sleep(FRAME_INTERVAL_MS);
     }
-    isCapturing = false;
     document.getElementById('progressBar').style.width = '100%';
     goEl.style.display = 'none';
     msgEl.textContent  = '채점 중이에요... 🔍';
@@ -549,8 +546,9 @@
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* ── 손 랜드마크 시각화 ── */
-  let hands    = null;
-  let mpCamera = null;
+  let hands        = null;
+  let isTracking   = false;
+  let trackTimeout = null;
 
   function initHands() {
     hands = new Hands({ locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}` });
@@ -574,18 +572,25 @@
     }
   }
 
+  async function doLandmarkUpdate() {
+    if (!isTracking) return;
+    const v = document.getElementById('video');
+    if (v && v.readyState >= 2 && hands) {
+      try { await hands.send({ image: v }); } catch(e) {}
+    }
+    if (isTracking) trackTimeout = setTimeout(doLandmarkUpdate, 700);
+  }
+
   function startTracking() {
     if (!hands) initHands();
-    const video = document.getElementById('video');
-    mpCamera = new Camera(video, {
-      onFrame: async () => { if (!isCapturing) await hands.send({ image: video }); },
-      width: 640, height: 480
-    });
-    mpCamera.start();
+    isTracking = true;
+    doLandmarkUpdate();
   }
 
   function stopTracking() {
-    if (mpCamera) { mpCamera.stop(); mpCamera = null; }
+    isTracking = false;
+    clearTimeout(trackTimeout);
+    trackTimeout = null;
     const canvas = document.getElementById('landmark-canvas');
     if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
   }

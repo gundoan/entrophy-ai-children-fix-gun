@@ -213,11 +213,11 @@
   const RECORD_DURATION_MS = 3000;   // 녹화 길이
   const FRAME_INTERVAL_MS  = 200;    // 프레임 간격 (200ms = 초당 5장)
 
-  let currentId   = null;
-  let camStream   = null;
-  let handsModel  = null;
-  let isTracking  = false;
-  let isCapturing = false;
+  let currentId    = null;
+  let camStream    = null;
+  let handsModel   = null;
+  let isTracking   = false;
+  let trackTimeout = null;
 
   // ── 손 랜드마크 트래킹 ──────────────────────────
   async function initHands() {
@@ -241,19 +241,25 @@
     }
   }
 
+  async function doLandmarkUpdate() {
+    if (!isTracking) return;
+    const v = document.getElementById('video');
+    if (v && v.readyState >= 2 && handsModel) {
+      try { await handsModel.send({ image: v }); } catch(e) {}
+    }
+    if (isTracking) trackTimeout = setTimeout(doLandmarkUpdate, 700);
+  }
+
   async function startTracking() {
-    isTracking = true;
     await initHands();
-    (async function loop() {
-      if (!isTracking) return;
-      const v = document.getElementById('video');
-      if (!isCapturing && v.readyState >= 2) { try { await handsModel.send({ image: v }); } catch(e) {} }
-      requestAnimationFrame(loop);
-    })();
+    isTracking = true;
+    doLandmarkUpdate();
   }
 
   function stopTracking() {
     isTracking = false;
+    clearTimeout(trackTimeout);
+    trackTimeout = null;
     const c = document.getElementById('landmark-canvas');
     if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
   }
@@ -332,8 +338,7 @@
     }
     numEl.style.display = 'none';
 
-    // ── 프레임 캡처 (트래킹 일시 정지) ──
-    isCapturing = true;
+    // ── 프레임 캡처 ──
     document.getElementById('recIndicator').classList.add('on');
     document.getElementById('progressWrap').style.display = 'block';
     msgEl.textContent = '수화를 해주세요! (3초)';
@@ -347,7 +352,6 @@
       document.getElementById('progressBar').style.width = progress + '%';
       await sleep(FRAME_INTERVAL_MS);
     }
-    isCapturing = false;
     document.getElementById('progressBar').style.width = '100%';
     document.getElementById('recIndicator').classList.remove('on');
     msgEl.textContent = `${blobs.length}프레임 캡처 완료. 서버 전송 중...`;
