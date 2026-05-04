@@ -247,7 +247,7 @@
     if (v && v.readyState >= 2 && handsModel) {
       try { await handsModel.send({ image: v }); } catch(e) {}
     }
-    if (isTracking) trackTimeout = setTimeout(doLandmarkUpdate, 700);
+    if (isTracking) trackTimeout = setTimeout(doLandmarkUpdate, 150);
   }
 
   async function startTracking() {
