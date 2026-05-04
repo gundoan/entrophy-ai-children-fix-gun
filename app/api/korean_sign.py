@@ -79,7 +79,7 @@ async def evaluate_sign(word_id: int, files: List[UploadFile] = File(...)):
 
         word = next(w for w in WORDS if w["id"] == word_id)
         return {
-            "isCorrect": result["score"] >= 0.70,
+            "isCorrect": result["score"] >= 0.90,
             "score": round(result["score"], 3),
             "word": word["korean"],
         }

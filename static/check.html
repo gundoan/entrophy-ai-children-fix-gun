@@ -476,6 +476,7 @@
     goEl.style.display = 'block';
     msgEl.textContent  = '지금 수화하세요! (3초)';
     document.getElementById('progressWrap').style.display = 'block';
+    setTimeout(() => { goEl.style.display = 'none'; }, 800);
 
     const blobs = [];
     const start = Date.now();
@@ -522,7 +523,7 @@
     if (isCorrect) {
       overlay.className = 'result-overlay on result-bg-pass';
       labelEl.textContent = '🎉 완벽해요!';
-      msgEl.textContent   = '정말 잘했어요! 👏';
+      msgEl.textContent   = '정말 잘했어요! 최고예요 👏';
       camMsg.textContent  = '정답이에요! 🌟';
       btnNext.classList.add('on');
       passedCount++;
@@ -531,9 +532,9 @@
       }
     } else {
       overlay.className = 'result-overlay on result-bg-fail';
-      labelEl.textContent = '💪 다시 해봐요!';
-      msgEl.textContent   = '조금만 더 연습해요~';
-      camMsg.textContent  = '한 번 더 도전! 🔥';
+      labelEl.textContent = '🌈 한 번 더!';
+      msgEl.textContent   = '조금만 더 하면 될 것 같아요~ 💪';
+      camMsg.textContent  = '다시 해봐요! 할 수 있어요 ✨';
       btnNext.classList.remove('on');
     }
 
