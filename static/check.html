@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>수어 확인</title>
+  <title>🎈 수어 챌린지</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Round+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
@@ -11,90 +12,148 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #0f172a;
-      color: #e2e8f0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Nanum Round Gothic', 'Apple SD Gothic Neo', sans-serif;
       min-height: 100vh;
+      background: linear-gradient(160deg, #ffeaa7 0%, #fd79a8 40%, #a29bfe 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 24px 64px;
+      padding: 0 24px 80px;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    h1 { font-size: 2rem; font-weight: 800; color: #f8fafc; }
-    .subtitle { color: #64748b; margin-top: 6px; margin-bottom: 48px; font-size: 0.95rem; }
-
-    .top-link {
-      position: absolute; top: 24px; right: 28px;
-      color: #64748b; font-size: 0.85rem; text-decoration: none;
-      background: #1e293b; padding: 6px 14px; border-radius: 20px;
-      border: 1px solid #334155;
+    /* ── 배경 별/하트 파티클 ── */
+    .particles {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
     }
-    .top-link:hover { color: #e2e8f0; border-color: #60a5fa; }
+    .particle {
+      position: absolute;
+      font-size: 1.4rem;
+      animation: floatUp linear infinite;
+      opacity: 0.55;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0.6; }
+      100% { transform: translateY(-10vh)  rotate(360deg); opacity: 0; }
+    }
 
-    /* ── 카드 그리드 ── */
+    /* ── 헤더 ── */
+    .hero {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 48px 16px 36px;
+    }
+    .hero-balloons { font-size: 2.8rem; letter-spacing: 6px; margin-bottom: 10px; }
+    .hero h1 {
+      font-size: 2.6rem; font-weight: 800;
+      color: #fff;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.18), 0 0 40px rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.22);
+      display: inline-block; padding: 6px 20px;
+      border-radius: 30px; backdrop-filter: blur(6px);
+    }
+
+    /* ── 단어 그리드 ── */
     .grid {
+      position: relative; z-index: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 22px;
+      max-width: 980px;
       width: 100%;
     }
 
     .card {
-      background: #1e293b;
-      border: 2px solid #334155;
-      border-radius: 18px;
-      padding: 32px 16px 24px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px 16px 22px;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s, background 0.15s;
       position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
       user-select: none;
     }
-    .card:hover         { transform: translateY(-5px); border-color: #818cf8; background: #1e1e3a; }
-    .card.no-answer     { opacity: 0.45; cursor: not-allowed; }
-    .card.no-answer:hover { transform: none; border-color: #334155; background: #1e293b; }
-
-    .card-ko  { font-size: 2.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
-    .card-en  { font-size: 0.88rem; color: #94a3b8; margin-bottom: 16px; }
-    .card-tag {
-      display: inline-block; font-size: 0.78rem;
-      padding: 3px 12px; border-radius: 20px;
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 7px;
+      border-radius: 24px 24px 0 0;
     }
-    .card:not(.no-answer) .card-tag { background: #1e1a3a; color: #818cf8; border: 1px solid #4338ca; }
-    .card.no-answer       .card-tag { background: #1e293b; color: #475569; border: 1px solid #334155; }
+    .card:nth-child(1)::before { background: linear-gradient(90deg, #ff6b9d, #ff8e53); }
+    .card:nth-child(2)::before { background: linear-gradient(90deg, #4fc3f7, #0288d1); }
+    .card:nth-child(3)::before { background: linear-gradient(90deg, #ff4081, #f50057); }
+    .card:nth-child(4)::before { background: linear-gradient(90deg, #69f0ae, #00bfa5); }
+    .card:nth-child(5)::before { background: linear-gradient(90deg, #ffd740, #ff6d00); }
+    .card:nth-child(6)::before { background: linear-gradient(90deg, #e040fb, #aa00ff); }
 
-    /* ── 모달 ── */
+    .card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+    }
+    .card.no-answer { opacity: 0.45; cursor: not-allowed; }
+    .card.no-answer:hover { transform: none; box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+
+    .card-emoji { font-size: 2rem; margin-bottom: 6px; }
+    .card-ko { font-size: 2rem; font-weight: 800; color: #2d3436; margin-bottom: 4px; }
+    .card-en { font-size: 0.82rem; color: #636e72; margin-bottom: 14px; }
+    .card-tag {
+      display: inline-block; font-size: 0.75rem;
+      padding: 4px 14px; border-radius: 30px; font-weight: 700;
+    }
+    .card:not(.no-answer) .card-tag { background: #fff3e0; color: #e65100; }
+    .card.no-answer       .card-tag { background: #f5f5f5; color: #9e9e9e; }
+
+    /* ── 모달 백드롭 ── */
     .backdrop {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.88);
+      background: rgba(80, 40, 120, 0.72);
+      backdrop-filter: blur(4px);
       z-index: 200; align-items: center; justify-content: center;
     }
     .backdrop.on { display: flex; }
 
+    /* ── 모달 ── */
     .modal {
-      background: #1e293b; border-radius: 22px;
-      padding: 36px 32px 28px; width: 90%; max-width: 500px;
+      background: #fff; border-radius: 28px;
+      padding: 0; width: 90%; max-width: 480px;
       position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+      overflow: hidden;
     }
+    .modal-header {
+      background: linear-gradient(135deg, #a29bfe, #fd79a8);
+      padding: 20px 24px 16px;
+      text-align: center; position: relative;
+    }
+    .modal-word {
+      font-size: 2.2rem; font-weight: 800; color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .modal-en { font-size: 0.92rem; color: rgba(255,255,255,0.88); margin-top: 2px; }
 
     .close-btn {
-      position: absolute; top: 16px; right: 16px;
-      background: #334155; border: none; color: #94a3b8;
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(255,255,255,0.28); border: none; color: #fff;
       width: 34px; height: 34px; border-radius: 50%;
-      cursor: pointer; font-size: 1rem;
+      cursor: pointer; font-size: 1rem; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
     }
-    .close-btn:hover { background: #475569; color: #fff; }
+    .close-btn:hover { background: rgba(255,255,255,0.50); }
 
-    .modal-word { font-size: 2rem; font-weight: 800; text-align: center; color: #f1f5f9; }
-    .modal-en   { font-size: 0.95rem; color: #94a3b8; text-align: center; margin-bottom: 22px; }
+    .modal-body { padding: 20px 22px 22px; }
 
     /* ── 웹캠 ── */
     .cam-wrap {
-      position: relative; border-radius: 14px; overflow: hidden;
-      background: #000; aspect-ratio: 4/3; margin-bottom: 14px;
+      position: relative; border-radius: 16px; overflow: hidden;
+      background: #111; aspect-ratio: 4/3; margin-bottom: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
     #video {
       width: 100%; height: 100%; object-fit: cover;
@@ -112,137 +171,218 @@
     }
     .count-num {
       font-size: 8rem; font-weight: 900;
-      color: rgba(255,230,50,0.92);
-      text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+      color: #ffd32a;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
       display: none; line-height: 1;
     }
     .go-text {
       font-size: 3.5rem; font-weight: 900;
-      color: rgba(100,255,150,0.95);
-      text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+      color: #00e676;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
       display: none;
     }
     .cam-msg {
-      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
-      background: rgba(0,0,0,0.65); color: #fff;
-      padding: 6px 18px; border-radius: 20px; font-size: 0.88rem;
-      white-space: nowrap;
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.60); color: #fff;
+      padding: 5px 16px; border-radius: 20px; font-size: 0.85rem;
+      white-space: nowrap; font-weight: 700;
     }
 
     /* ── 진행바 ── */
     .progress-wrap {
-      height: 8px; background: #0f172a; border-radius: 4px;
+      height: 10px; background: #f0f0f0; border-radius: 5px;
       margin-bottom: 14px; overflow: hidden; display: none;
     }
     .progress-bar {
-      height: 100%; width: 0%; border-radius: 4px;
+      height: 100%; width: 0%; border-radius: 5px;
+      background: linear-gradient(90deg, #ffeaa7, #fd79a8, #a29bfe);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s linear infinite;
       transition: width 0.1s linear;
     }
-    .progress-bar.checking { background: #818cf8; }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
 
     /* ── 결과 오버레이 ── */
     .result-overlay {
       display: none; position: absolute; inset: 0;
       align-items: center; justify-content: center;
-      flex-direction: column; gap: 12px;
+      flex-direction: column; gap: 10px;
     }
     .result-overlay.on { display: flex; }
-    .result-bg-pass { background: rgba(0,120,0,0.82); }
-    .result-bg-fail { background: rgba(160,0,0,0.82); }
+    .result-bg-pass { background: rgba(0, 160, 100, 0.88); }
+    .result-bg-fail { background: rgba(200, 60, 60, 0.82); }
     .result-label {
-      font-size: 4rem; font-weight: 900; color: #fff;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      font-size: 3.2rem; font-weight: 900; color: #fff;
+      text-shadow: 0 3px 16px rgba(0,0,0,0.4);
     }
     .result-score {
-      font-size: 1.4rem; color: rgba(255,255,255,0.85); font-weight: 600;
+      font-size: 1.3rem; color: rgba(255,255,255,0.92); font-weight: 700;
+    }
+    .result-msg {
+      font-size: 1rem; color: rgba(255,255,255,0.82); font-weight: 600;
     }
 
-    /* ── 버튼 ── */
+    /* ── 확인 버튼 ── */
     .check-btn {
-      width: 100%; padding: 14px;
-      background: #6366f1; color: #fff; border: none;
-      border-radius: 12px; font-size: 1.05rem; font-weight: 600;
-      cursor: pointer; transition: background 0.15s;
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, #fd79a8, #e17055);
+      color: #fff; border: none;
+      border-radius: 16px; font-size: 1.1rem; font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(253,121,168,0.45);
+      transition: transform 0.15s, box-shadow 0.15s;
+      font-family: inherit;
     }
-    .check-btn:hover:not(:disabled) { background: #4f46e5; }
-    .check-btn:disabled { background: #475569; cursor: not-allowed; }
+    .check-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(253,121,168,0.55);
+    }
+    .check-btn:disabled {
+      background: #b2bec3; box-shadow: none; cursor: not-allowed;
+    }
 
-    /* ── 하단 버튼 그룹 ── */
+    /* ── 결과 버튼 그룹 ── */
     .btn-row { display: flex; gap: 10px; margin-top: 12px; display: none; }
     .btn-row.on { display: flex; }
     .btn-retry {
-      flex: 1; padding: 12px; background: #334155; color: #e2e8f0;
-      border: none; border-radius: 10px; font-size: 0.95rem;
-      font-weight: 600; cursor: pointer;
+      flex: 1; padding: 13px;
+      background: #f0f0f0; color: #2d3436;
+      border: none; border-radius: 14px; font-size: 0.95rem;
+      font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: background 0.15s;
     }
-    .btn-retry:hover { background: #475569; }
+    .btn-retry:hover { background: #dfe6e9; }
     .btn-next {
-      flex: 1; padding: 12px; background: #22c55e; color: #fff;
-      border: none; border-radius: 10px; font-size: 0.95rem;
-      font-weight: 600; cursor: pointer; display: none;
+      flex: 1; padding: 13px;
+      background: linear-gradient(135deg, #55efc4, #00b894);
+      color: #fff;
+      border: none; border-radius: 14px; font-size: 0.95rem;
+      font-weight: 700; cursor: pointer; display: none; font-family: inherit;
+      transition: transform 0.15s;
     }
-    .btn-next:hover { background: #16a34a; }
+    .btn-next:hover { transform: translateY(-2px); }
     .btn-next.on { display: block; }
+
+    /* ── 전체 클리어 배너 ── */
+    .clear-banner {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(100, 50, 180, 0.85);
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+    }
+    .clear-banner.on { display: flex; }
+    .clear-text { font-size: 3rem; font-weight: 900; color: #fff; text-align: center; }
+    .clear-sub  { font-size: 1.2rem; color: rgba(255,255,255,0.85); }
+    .clear-close {
+      margin-top: 10px; padding: 14px 40px;
+      background: #ffd32a; color: #333; border: none;
+      border-radius: 30px; font-size: 1.1rem; font-weight: 800;
+      cursor: pointer; font-family: inherit;
+    }
   </style>
 </head>
 <body>
 
-  <a class="top-link" href="/record">✏️ 녹화 페이지</a>
+  <!-- 배경 파티클 -->
+  <div class="particles" id="particles"></div>
 
-  <h1>🤟 수어 확인</h1>
-  <p class="subtitle">단어 카드를 클릭하면 수화를 확인합니다</p>
+  <!-- 헤더 -->
+  <div class="hero">
+    <div class="hero-balloons">🎈🎉🎈</div>
+    <h1>🤟 손으로 말해봐요!</h1>
+    <p class="hero-sub">✨ 어린이날 수어 챌린지 ✨</p>
+  </div>
 
+  <!-- 단어 카드 그리드 -->
   <div class="grid" id="grid"></div>
 
   <!-- 모달 -->
   <div class="backdrop" id="backdrop">
     <div class="modal">
-      <button class="close-btn" onclick="closeModal()">✕</button>
-
-      <p class="modal-word" id="mWord"></p>
-      <p class="modal-en"   id="mEn"></p>
-
-      <div class="cam-wrap">
-        <video id="video" autoplay playsinline muted></video>
-        <canvas id="landmark-canvas"></canvas>
-        <div class="cam-overlay">
-          <span class="count-num" id="countNum"></span>
-          <span class="go-text"   id="goText">GO!</span>
-        </div>
-        <!-- 결과 오버레이 -->
-        <div class="result-overlay" id="resultOverlay">
-          <div class="result-label" id="resultLabel"></div>
-          <div class="result-score" id="resultScore"></div>
-        </div>
-        <div class="cam-msg" id="camMsg">확인 버튼을 눌러 시작하세요</div>
+      <div class="modal-header">
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <p class="modal-word" id="mWord"></p>
+        <p class="modal-en"   id="mEn"></p>
       </div>
+      <div class="modal-body">
+        <div class="cam-wrap">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="landmark-canvas"></canvas>
+          <div class="cam-overlay">
+            <span class="count-num" id="countNum"></span>
+            <span class="go-text"   id="goText">🌟 GO!</span>
+          </div>
+          <div class="result-overlay" id="resultOverlay">
+            <div class="result-label" id="resultLabel"></div>
+            <div class="result-score" id="resultScore"></div>
+            <div class="result-msg"   id="resultMsg"></div>
+          </div>
+          <div class="cam-msg" id="camMsg">버튼을 눌러 시작해요 🎯</div>
+        </div>
 
-      <div class="progress-wrap" id="progressWrap">
-        <div class="progress-bar checking" id="progressBar"></div>
-      </div>
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-      <button class="check-btn" id="checkBtn" onclick="startCheck()">
-        ▶ 수화 확인 시작
-      </button>
+        <button class="check-btn" id="checkBtn" onclick="startCheck()">
+          🎬 수화 확인 시작!
+        </button>
 
-      <div class="btn-row" id="btnRow">
-        <button class="btn-retry" onclick="retry()">↩ 다시 하기</button>
-        <button class="btn-next on" id="btnNext" onclick="closeModal()">다음 단어 →</button>
+        <div class="btn-row" id="btnRow">
+          <button class="btn-retry" onclick="retry()">🔄 다시 하기</button>
+          <button class="btn-next on" id="btnNext" onclick="closeModal()">다음 단어 🎉</button>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- 전체 클리어 -->
+  <div class="clear-banner" id="clearBanner">
+    <div style="font-size:4rem">🎊🎈🎊</div>
+    <div class="clear-text">완전 잘했어요!</div>
+    <div class="clear-sub">모든 수화를 다 맞혔어요 🌟</div>
+    <button class="clear-close" onclick="document.getElementById('clearBanner').classList.remove('on')">
+      고마워요! 👋
+    </button>
   </div>
 
 <script>
   const RECORD_DURATION_MS = 3000;
   const FRAME_INTERVAL_MS  = 200;
 
-  let currentId = null;
-  let camStream = null;
+  let currentId   = null;
+  let camStream   = null;
+  let isCapturing = false;
+  let passedCount = 0;
+  let totalWords  = 0;
 
-  /* 단어 목록 로드 */
+  const CARD_EMOJIS = { 1: '👩', 2: '👨', 3: '❤️', 4: '🙋', 5: '👦', 6: '👧' };
+
+  /* ── 배경 파티클 생성 ── */
+  (function spawnParticles() {
+    const pool  = ['⭐','🌟','✨','🎈','🎉','🎊','🌸','🦋','🌈','💛','💜','💙'];
+    const wrap  = document.getElementById('particles');
+    for (let i = 0; i < 22; i++) {
+      const el = document.createElement('span');
+      el.className = 'particle';
+      el.textContent = pool[Math.floor(Math.random() * pool.length)];
+      el.style.left     = Math.random() * 100 + 'vw';
+      el.style.fontSize = (1 + Math.random() * 1.4) + 'rem';
+      const dur = 8 + Math.random() * 12;
+      el.style.animationDuration = dur + 's';
+      el.style.animationDelay   = -(Math.random() * dur) + 's';
+      wrap.appendChild(el);
+    }
+  })();
+
+  /* ── 단어 카드 렌더링 ── */
   async function loadWords() {
     const res   = await fetch('/api/korean/words');
     const words = await res.json();
+    totalWords = words.filter(w => w.is_recorded).length;
     renderCards(words);
   }
 
@@ -250,24 +390,25 @@
     const grid = document.getElementById('grid');
     grid.innerHTML = words.map(w => {
       const hasAnswer = w.is_recorded;
+      const emoji = CARD_EMOJIS[w.id] || '🤟';
       return `
         <div class="card ${hasAnswer ? '' : 'no-answer'}"
              onclick="${hasAnswer ? `openModal(${w.id},'${w.korean}','${w.english}')` : ''}">
+          <div class="card-emoji">${emoji}</div>
           <div class="card-ko">${w.korean}</div>
           <div class="card-en">${w.english}</div>
-          <div class="card-tag">${hasAnswer ? '✅ 확인 가능' : '❌ 정답 없음'}</div>
+          <div class="card-tag">${hasAnswer ? '👆 눌러봐요!' : '❌ 준비 중'}</div>
         </div>
       `;
     }).join('');
   }
 
-  /* 모달 열기 */
+  /* ── 모달 열기/닫기 ── */
   async function openModal(id, korean, english) {
     currentId = id;
     document.getElementById('mWord').textContent = korean;
     document.getElementById('mEn').textContent   = english;
     resetUI();
-
     try {
       camStream = await navigator.mediaDevices.getUserMedia({ video: true });
       document.getElementById('video').srcObject = camStream;
@@ -291,23 +432,22 @@
   }
 
   function resetUI() {
-    document.getElementById('checkBtn').disabled    = false;
-    document.getElementById('checkBtn').textContent = '▶ 수화 확인 시작';
-    document.getElementById('checkBtn').style.display = 'block';
-    document.getElementById('countNum').style.display  = 'none';
-    document.getElementById('goText').style.display    = 'none';
-    document.getElementById('progressWrap').style.display = 'none';
-    document.getElementById('progressBar').style.width    = '0%';
-    document.getElementById('resultOverlay').className    = 'result-overlay';
+    const btn = document.getElementById('checkBtn');
+    btn.disabled    = false;
+    btn.textContent = '🎬 수화 확인 시작!';
+    btn.style.display = 'block';
+    document.getElementById('countNum').style.display       = 'none';
+    document.getElementById('goText').style.display         = 'none';
+    document.getElementById('progressWrap').style.display   = 'none';
+    document.getElementById('progressBar').style.width      = '0%';
+    document.getElementById('resultOverlay').className      = 'result-overlay';
     document.getElementById('btnRow').classList.remove('on');
-    document.getElementById('camMsg').textContent = '확인 버튼을 눌러 시작하세요';
+    document.getElementById('camMsg').textContent = '버튼을 눌러 시작해요 🎯';
   }
 
-  function retry() {
-    resetUI();
-  }
+  function retry() { resetUI(); }
 
-  /* 수화 확인 시작 */
+  /* ── 수화 확인 ── */
   async function startCheck() {
     const btn   = document.getElementById('checkBtn');
     const numEl = document.getElementById('countNum');
@@ -316,21 +456,19 @@
     btn.disabled = true;
     btn.style.display = 'none';
 
-    // ── 카운트다운 3→2→1 ──
     for (let i = 3; i >= 1; i--) {
       numEl.textContent   = i;
       numEl.style.display = 'block';
-      msgEl.textContent   = `${i}초 후 수화 시작...`;
+      msgEl.textContent   = `${i}초 뒤 시작해요...`;
       await sleep(1000);
     }
     numEl.style.display = 'none';
 
-    // ── GO! 표시 ──
     goEl.style.display = 'block';
-    msgEl.textContent  = '지금 수화하세요! (2초)';
+    msgEl.textContent  = '지금 수화하세요! (3초)';
     document.getElementById('progressWrap').style.display = 'block';
 
-    // ── 2초 프레임 캡처 ──
+    isCapturing = true;
     const blobs = [];
     const start = Date.now();
     while (Date.now() - start < RECORD_DURATION_MS) {
@@ -339,18 +477,17 @@
       document.getElementById('progressBar').style.width = pct + '%';
       await sleep(FRAME_INTERVAL_MS);
     }
+    isCapturing = false;
     document.getElementById('progressBar').style.width = '100%';
     goEl.style.display = 'none';
-    msgEl.textContent  = '채점 중...';
+    msgEl.textContent  = '채점 중이에요... 🔍';
 
-    // ── 서버 전송 ──
     const form = new FormData();
     blobs.forEach((blob, i) => form.append('files', blob, `frame_${i}.jpg`));
 
     try {
       const res  = await fetch(`/api/korean/evaluate/${currentId}`, { method: 'POST', body: form });
       const data = await res.json();
-
       if (res.ok) {
         showResult(data.isCorrect, data.score);
       } else {
@@ -360,7 +497,7 @@
         btn.textContent = '다시 시도';
       }
     } catch (e) {
-      msgEl.textContent = '네트워크 오류';
+      msgEl.textContent = '네트워크 오류 😢';
       btn.style.display = 'block';
       btn.disabled = false;
       btn.textContent = '다시 시도';
@@ -368,27 +505,33 @@
   }
 
   function showResult(isCorrect, score) {
-    const overlay  = document.getElementById('resultOverlay');
-    const labelEl  = document.getElementById('resultLabel');
-    const scoreEl  = document.getElementById('resultScore');
-    const msgEl    = document.getElementById('camMsg');
-    const btnRow   = document.getElementById('btnRow');
-    const btnNext  = document.getElementById('btnNext');
+    const overlay = document.getElementById('resultOverlay');
+    const labelEl = document.getElementById('resultLabel');
+    const scoreEl = document.getElementById('resultScore');
+    const msgEl   = document.getElementById('resultMsg');
+    const camMsg  = document.getElementById('camMsg');
+    const btnNext = document.getElementById('btnNext');
 
     if (isCorrect) {
       overlay.className = 'result-overlay on result-bg-pass';
-      labelEl.textContent = '✅ PASS!';
-      msgEl.textContent   = '정답이에요!';
+      labelEl.textContent = '🎉 완벽해요!';
+      msgEl.textContent   = '정말 잘했어요! 👏';
+      camMsg.textContent  = '정답이에요! 🌟';
       btnNext.classList.add('on');
+      passedCount++;
+      if (passedCount >= totalWords) {
+        setTimeout(() => document.getElementById('clearBanner').classList.add('on'), 1800);
+      }
     } else {
       overlay.className = 'result-overlay on result-bg-fail';
-      labelEl.textContent = '❌ 다시!';
-      msgEl.textContent   = '조금 더 연습해봐요';
+      labelEl.textContent = '💪 다시 해봐요!';
+      msgEl.textContent   = '조금만 더 연습해요~';
+      camMsg.textContent  = '한 번 더 도전! 🔥';
       btnNext.classList.remove('on');
     }
 
-    scoreEl.textContent = `점수: ${Math.round(score * 100)}%`;
-    btnRow.classList.add('on');
+    scoreEl.textContent = `점수: ${Math.round(score * 100)}점`;
+    document.getElementById('btnRow').classList.add('on');
     document.getElementById('progressWrap').style.display = 'none';
   }
 
@@ -406,7 +549,7 @@
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* ── 손 랜드마크 시각화 ── */
-  let hands = null;
+  let hands    = null;
   let mpCamera = null;
 
   function initHands() {
@@ -425,8 +568,8 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (results.multiHandLandmarks) {
       for (const landmarks of results.multiHandLandmarks) {
-        drawConnectors(ctx, landmarks, HAND_CONNECTIONS, { color: '#00e5ff', lineWidth: 2.5 });
-        drawLandmarks(ctx, landmarks, { color: '#ff6ec7', lineWidth: 1, radius: 4 });
+        drawConnectors(ctx, landmarks, HAND_CONNECTIONS, { color: '#ffeb3b', lineWidth: 3 });
+        drawLandmarks(ctx, landmarks, { color: '#ff4081', lineWidth: 1, radius: 5 });
       }
     }
   }
@@ -435,7 +578,7 @@
     if (!hands) initHands();
     const video = document.getElementById('video');
     mpCamera = new Camera(video, {
-      onFrame: async () => { await hands.send({ image: video }); },
+      onFrame: async () => { if (!isCapturing) await hands.send({ image: video }); },
       width: 640, height: 480
     });
     mpCamera.start();

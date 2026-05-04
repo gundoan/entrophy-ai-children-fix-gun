@@ -213,10 +213,11 @@
   const RECORD_DURATION_MS = 3000;   // 녹화 길이
   const FRAME_INTERVAL_MS  = 200;    // 프레임 간격 (200ms = 초당 5장)
 
-  let currentId  = null;
-  let camStream  = null;
-  let handsModel = null;
-  let isTracking = false;
+  let currentId   = null;
+  let camStream   = null;
+  let handsModel  = null;
+  let isTracking  = false;
+  let isCapturing = false;
 
   // ── 손 랜드마크 트래킹 ──────────────────────────
   async function initHands() {
@@ -246,7 +247,7 @@
     (async function loop() {
       if (!isTracking) return;
       const v = document.getElementById('video');
-      if (v.readyState >= 2) { try { await handsModel.send({ image: v }); } catch(e) {} }
+      if (!isCapturing && v.readyState >= 2) { try { await handsModel.send({ image: v }); } catch(e) {} }
       requestAnimationFrame(loop);
     })();
   }
@@ -331,10 +332,11 @@
     }
     numEl.style.display = 'none';
 
-    // ── 2초 동안 프레임 캡처 ──
+    // ── 프레임 캡처 (트래킹 일시 정지) ──
+    isCapturing = true;
     document.getElementById('recIndicator').classList.add('on');
     document.getElementById('progressWrap').style.display = 'block';
-    msgEl.textContent = '수화를 해주세요! (2초)';
+    msgEl.textContent = '수화를 해주세요! (3초)';
 
     const blobs = [];
     const start = Date.now();
@@ -345,6 +347,7 @@
       document.getElementById('progressBar').style.width = progress + '%';
       await sleep(FRAME_INTERVAL_MS);
     }
+    isCapturing = false;
     document.getElementById('progressBar').style.width = '100%';
     document.getElementById('recIndicator').classList.remove('on');
     msgEl.textContent = `${blobs.length}프레임 캡처 완료. 서버 전송 중...`;
