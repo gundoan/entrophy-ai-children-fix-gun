@@ -89,8 +89,13 @@ python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 4. 저장 완료 메시지 확인
 5. 6개 단어 모두 녹화
 
-> 정답 데이터는 `answers/korean/` 폴더에 JSON 파일로 저장돼요.  
-> 녹화 후 git에 커밋하면 다른 사람도 바로 사용할 수 있어요.
+> 정답 데이터는 `app/answers/korean/` 폴더에 JSON 파일로 저장돼요.  
+> 녹화 후 아래 명령어로 git에 올리면 친구가 pull 받았을 때 다시 녹화할 필요 없어요.
+> ```bash
+> git add app/answers/korean/
+> git commit -m "정답 수화 데이터 추가"
+> git push
+> ```
 
 ### Step 2. 아이들이 수화 확인하기 (`/check`)
 
